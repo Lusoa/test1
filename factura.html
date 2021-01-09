@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <title>Factura</title>
+  <link rel="stylesheet" href="factura.css" >
+ </head>
+ <body>
+  <h1>Factura</h1>
+  <table>
+    <tr>
+     <th>Producto</th>
+     <th>Precio</th>
+     <th>Cantidad</th>
+     <th>Total</th>
+    </tr>
+    <tr>
+     <td>Tijeras</td>
+     <td>7</td>
+     <td>3</td>
+     <td>21</td>
+    </tr>
+    <tr>
+     <td>Tijeras</td>
+     <td>7</td>
+     <td>3</td>
+     <td>21</td>
+    </tr>
+    <tr>
+     <td>Bolígrafo</td>
+     <td>2</td>
+     <td>5</td>
+     <td>10</td>
+    </tr>
+    <tr>
+     <td>Grapadora</td>
+     <td>20</td>
+     <td>2</td>
+     <td>40</td>
+    </tr>
+    <tr>
+     <td>Carpeta</td>
+     <td>5</td>
+     <td>40</td>
+     <td>200</td>
+    </tr>
+    <tr>
+     <td colspan="3">Subtotal</td>
+     <td>250</td>
+    </tr> 
+    <tr>
+     <td colspan="3">Gastos de envío</td>
+     <td>5</td>
+    </tr> 
+    <tr>
+     <td colspan="3">Precio total</td>
+     <td>255</td>
+    </tr> 
+   </table>
+  <footer>
+    <td ng-attr-style="{{$ctrl.defaultTDpadding}}" style="padding:0;">
+        <table ng-attr-style="{{$ctrl.tableStyle()}}" border="0" cellpadding="0" cellspacing="0" style="font-family:Arial,Helvetica,sans-serif;line-height:0px;font-size:1px;padding:0px;border-spacing:0px;margin:0px;border-collapse:collapse;">
+        <tbody>
+            <tr>
+            <!-- LOGO SECTION and vertical section borders -->
+            <!-- ngRepeat: logoSection in table.logoSections --><!-- ngIf: $ctrl.showSection(logoSection) --><td ng-repeat="logoSection in table.logoSections" ng-attr-style="{{$ctrl.tdStyle(logoSection)}}" ng-if="$ctrl.showSection(logoSection)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'section' + logoSection.section.section_area)}" width="142" ng-click="$ctrl.goToVerticalSection(logoSection)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0" style="padding:0;">
+                <!-- ngIf: $ctrl.sectionIsntSpacer(logoSection) --><table ng-attr-style="{{$ctrl.tableStyle()}}" ng-if="$ctrl.sectionIsntSpacer(logoSection)" border="0" cellpadding="0" cellspacing="0" class="ng-scope" style="font-family:Arial,Helvetica,sans-serif;line-height:0px;font-size:1px;padding:0px;border-spacing:0px;margin:0px;border-collapse:collapse;">
+                <tbody>
+                    <!-- FIRST FIELD in vertical sections and horizontal field borders -->
+                    <!-- ngIf: $ctrl.showFieldInColumn(logoSection, logoSection.fields[0]) --><tr ng-if="$ctrl.showFieldInColumn(logoSection, logoSection.fields[0])" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + logoSection.fields[0].area)}" ng-mouseover="$ctrl.highlightPreviewField(logoSection.fields[0])" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(logoSection.fields[0], logoSection)" class="ng-scope" role="button" tabindex="0" style="">
+                    <td ng-attr-style="{{$ctrl.tdStyle(logoSection.fields[0])}}" style="border-collapse:collapse;line-height:0px;padding:0;">
+                        <!-- IMAGE FIELDS -->
+                        <!-- ngIf: logoSection.fields[0].category == 'image' --><zs-remove ng-if="logoSection.fields[0].category == 'image'" class="ng-scope">
+                        <!-- without hyperlink -->
+                        <!-- ngIf: logoSection.fields[0].category == 'image' && !logoSection.fields[0].hyperlink --><img ng-if="logoSection.fields[0].category == 'image' &amp;&amp; !logoSection.fields[0].hyperlink" ng-src="https://y5t6h9a6.stackpathcdn.com/952f94f9-e665-4b9a-9713-b9233a46bc99/img.png" height="143" width="142" alt="" border="0" ng-attr-style="{{$ctrl.changeImageShape(logoSection.fields[0])}}" class="ng-scope" src="https://y5t6h9a6.stackpathcdn.com/952f94f9-e665-4b9a-9713-b9233a46bc99/img.png" style=""><!-- end ngIf: logoSection.fields[0].category == 'image' && !logoSection.fields[0].hyperlink -->
+                        <!-- with hyperlink -->
+                        <!-- ngIf: logoSection.fields[0].category == 'image' && logoSection.fields[0].hyperlink -->
+                        </zs-remove><!-- end ngIf: logoSection.fields[0].category == 'image' -->
+                    </td>
+                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(logoSection, logoSection.fields[0]) -->
+                    <!-- SOCIAL FIELDS and spacers in horizontal sections -->
+                    <!-- ngIf: logoSection.section.in_a_row -->
+                    <!-- section bottom padding -->
+                    <!-- ngIf: logoSection.section.border_padding > 0 -->
+                    <!-- section bottom border -->
+                    <!-- ngIf: logoSection.section.border_width > 0 -->
+                    <!-- section bottom margin -->
+                    <!-- ngIf: logoSection.section.border_margin > 0 && logoSection.section.border_width > 0 -->
+                </tbody>
+                </table><!-- end ngIf: $ctrl.sectionIsntSpacer(logoSection) -->
+            </td><!-- end ngIf: $ctrl.showSection(logoSection) --><!-- end ngRepeat: logoSection in table.logoSections --><!-- ngIf: $ctrl.showSection(logoSection) --><td ng-repeat="logoSection in table.logoSections" ng-attr-style="{{$ctrl.tdStyle(logoSection)}}" ng-if="$ctrl.showSection(logoSection)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'section' + logoSection.section.section_area)}" width="7" ng-click="$ctrl.goToVerticalSection(logoSection)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0" style="border-collapse:collapse;padding-right: 7px;width: 7px;">
+                <!-- ngIf: $ctrl.sectionIsntSpacer(logoSection) -->
+            </td><!-- end ngIf: $ctrl.showSection(logoSection) --><!-- end ngRepeat: logoSection in table.logoSections --><!-- ngIf: $ctrl.showSection(logoSection) --><!-- end ngRepeat: logoSection in table.logoSections --><!-- ngIf: $ctrl.showSection(logoSection) --><!-- end ngRepeat: logoSection in table.logoSections -->
+            <td ng-attr-style="{{$ctrl.defaultTDpadding}}" style="padding:0;">
+                <table ng-attr-style="{{$ctrl.tableStyle()}}" border="0" cellpadding="0" cellspacing="0" style="font-family:Arial,Helvetica,sans-serif;line-height:0px;font-size:1px;padding:0px;border-spacing:0px;margin:0px;border-collapse:collapse;">
+                <tbody>
+                    <!-- ngRepeat: row in table.rows --><tr ng-repeat="row in table.rows" class="ng-scope">
+                    <td ng-attr-style="{{$ctrl.defaultTDpadding}}" style="padding:0;">
+                        <!-- EACH ROW -->
+                        <table ng-attr-style="{{$ctrl.tableStyle()}}" border="0" cellpadding="0" cellspacing="0" style="font-family:Arial,Helvetica,sans-serif;line-height:0px;font-size:1px;padding:0px;border-spacing:0px;margin:0px;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                            <!-- EACH SECTION and vertical section borders -->
+                            <!-- ngRepeat: section in row.sections --><!-- ngIf: $ctrl.showSection(section) --><td ng-repeat="section in row.sections" ng-attr-style="{{$ctrl.tdStyle(section)}}" ng-if="$ctrl.showSection(section)" ng-mouseover="$ctrl.highlightSectionSpacer(section)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'section' + section.style.section_area)}" ng-click="$ctrl.goToVerticalSection(section)" class="ng-scope" role="button" tabindex="0" style="padding:0;">
+                                <!-- ngIf: $ctrl.sectionIsntSpacer(section) --><table ng-attr-style="{{$ctrl.tableStyle()}}" ng-if="$ctrl.sectionIsntSpacer(section)" border="0" cellpadding="0" cellspacing="0" class="ng-scope" style="font-family:Arial,Helvetica,sans-serif;line-height:0px;font-size:1px;padding:0px;border-spacing:0px;margin:0px;border-collapse:collapse;">
+                                <tbody>
+                                    <!-- EACH FIELD in vertical sections and horizontal field borders -->
+                                    <!-- ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0" style="">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="border-collapse:collapse;font-family:Calibri, Helvetica, sans-serif;font-size:30.0px;font-style:normal;line-height:32px;font-weight:400;padding:0;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' --><zs-remove ng-if="field.category == 'text' || field.category == 'tag'" class="ng-scope">
+                                        <!-- with tag -->
+                                        <!-- ngIf: field.tag && field.tag.style.visible -->
+                                        <!-- without hyperlink-->
+                                        <!-- ngIf: !field.hyperlink --><span ng-if="!field.hyperlink" ng-attr-style="{{$ctrl.spanStyle(field)}}" class="ng-binding ng-scope" style="font-family:Calibri, Helvetica, sans-serif;font-size:30.0px;font-style:normal;line-height:32px;font-weight:400;color:#282828;display:inline;" _msthash="38052937" _msttexthash="196599">Brick Tamland</span><!-- end ngIf: !field.hyperlink -->
+                                        <!-- with hyperlink -->
+                                        <!-- ngIf: field.hyperlink -->
+                                        </zs-remove><!-- end ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0" style="">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="border-collapse:collapse;font-family:Calibri, Helvetica, sans-serif;font-size:21.0px;font-style:normal;line-height:23px;font-weight:700;padding:0;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' --><zs-remove ng-if="field.category == 'text' || field.category == 'tag'" class="ng-scope">
+                                        <!-- with tag -->
+                                        <!-- ngIf: field.tag && field.tag.style.visible -->
+                                        <!-- without hyperlink-->
+                                        <!-- ngIf: !field.hyperlink --><span ng-if="!field.hyperlink" ng-attr-style="{{$ctrl.spanStyle(field)}}" class="ng-binding ng-scope" style="font-family:Calibri, Helvetica, sans-serif;font-size:21.0px;font-style:normal;line-height:23px;font-weight:700;color:#282828;display:inline;" _msthash="43420910" _msttexthash="128921">KVWN Canal 4</span><!-- end ngIf: !field.hyperlink -->
+                                        <!-- with hyperlink -->
+                                        <!-- ngIf: field.hyperlink -->
+                                        </zs-remove><!-- end ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="border-collapse:collapse;padding-bottom:8px;height:8px;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0" style="">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="border-collapse:collapse;font-family:Calibri, Helvetica, sans-serif;font-size:15.0px;font-style:normal;line-height:17px;font-weight:400;padding:0;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' --><zs-remove ng-if="field.category == 'text' || field.category == 'tag'" class="ng-scope">
+                                        <!-- with tag -->
+                                        <!-- ngIf: field.tag && field.tag.style.visible --><font _mstmutation="1" _msthash="50743836" _msttexthash="280033"><span ng-if="field.tag &amp;&amp; field.tag.style.visible" ng-attr-style="{{$ctrl.spanStyle(field.tag)}}" class="ng-binding ng-scope" style="font-family:Calibri, Helvetica, sans-serif;font-size:14.0px;font-style:normal;line-height:16px;font-weight:400;color:#5e4036;display:inline;" _mstmutation="1" _istranslated="1">Móvil:</span> <span ng-if="!field.hyperlink" ng-attr-style="{{$ctrl.spanStyle(field)}}" class="ng-binding ng-scope" style="font-family:Calibri, Helvetica, sans-serif;font-size:15.0px;font-style:normal;line-height:17px;font-weight:400;color:#282828;display:inline;" _mstmutation="1" _istranslated="1">+1 (555) 7182 1921</span></font><!-- end ngIf: field.tag && field.tag.style.visible --><!-- without hyperlink--><!-- ngIf: !field.hyperlink --><!-- end ngIf: !field.hyperlink -->
+                                        <!-- with hyperlink -->
+                                        <!-- ngIf: field.hyperlink -->
+                                        </zs-remove><!-- end ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0" style="">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="border-collapse:collapse;font-family:Calibri, Helvetica, sans-serif;font-size:15.0px;font-style:normal;line-height:17px;font-weight:400;padding:0;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' --><zs-remove ng-if="field.category == 'text' || field.category == 'tag'" class="ng-scope">
+                                        <!-- with tag -->
+                                        <!-- ngIf: field.tag && field.tag.style.visible --><font _mstmutation="1" _msthash="56893603" _msttexthash="261976"><span ng-if="field.tag &amp;&amp; field.tag.style.visible" ng-attr-style="{{$ctrl.spanStyle(field.tag)}}" class="ng-binding ng-scope" style="font-family:Calibri, Helvetica, sans-serif;font-size:15.0px;font-style:normal;line-height:17px;font-weight:400;color:#5e4036;display:inline;" _mstmutation="1" _istranslated="1">Web:</span> <span ng-if="!field.hyperlink" ng-attr-style="{{$ctrl.spanStyle(field)}}" class="ng-binding ng-scope" style="font-family:Calibri, Helvetica, sans-serif;font-size:15.0px;font-style:normal;line-height:17px;font-weight:400;color:#282828;display:inline;" _mstmutation="1" _istranslated="1">www.gimm.io</span></font><!-- end ngIf: field.tag && field.tag.style.visible --><!-- without hyperlink--><!-- ngIf: !field.hyperlink --><!-- end ngIf: !field.hyperlink -->
+                                        <!-- with hyperlink -->
+                                        <!-- ngIf: field.hyperlink -->
+                                        </zs-remove><!-- end ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0" style="">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="border-collapse:collapse;font-family:Calibri, Helvetica, sans-serif;font-size:15.0px;font-style:normal;line-height:17px;font-weight:400;padding:0;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' --><zs-remove ng-if="field.category == 'text' || field.category == 'tag'" class="ng-scope">
+                                        <!-- with tag -->
+                                        <!-- ngIf: field.tag && field.tag.style.visible --><font _mstmutation="1" _msthash="63384152" _msttexthash="908037"><span ng-if="field.tag &amp;&amp; field.tag.style.visible" ng-attr-style="{{$ctrl.spanStyle(field.tag)}}" class="ng-binding ng-scope" style="font-family:Calibri, Helvetica, sans-serif;font-size:15.0px;font-style:normal;line-height:17px;font-weight:400;color:#5e4036;display:inline;" _mstmutation="1" _istranslated="1">Dirección:</span> <span ng-if="!field.hyperlink" ng-attr-style="{{$ctrl.spanStyle(field)}}" class="ng-binding ng-scope" style="font-family:Calibri, Helvetica, sans-serif;font-size:15.0px;font-style:normal;line-height:17px;font-weight:400;color:#282828;display:inline;" _mstmutation="1" _istranslated="1">15 River Dr, San Diego CA 22434</span></font><!-- end ngIf: field.tag && field.tag.style.visible --><!-- without hyperlink--><!-- ngIf: !field.hyperlink --><!-- end ngIf: !field.hyperlink -->
+                                        <!-- with hyperlink -->
+                                        <!-- ngIf: field.hyperlink -->
+                                        </zs-remove><!-- end ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="border-collapse:collapse;padding-bottom:3px;height:3px;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index -->
+                                    <!-- TEXT & SOCIAL FIELDS in horizontal sections -->
+                                    <!-- ngIf: section.section.in_a_row && !$ctrl.onlySocialFieldsInSection(section) -->
+                                    <!-- section bottom padding -->
+                                    <!-- ngIf: section.section.border_padding > 0 -->
+                                    <!-- section bottom border -->
+                                    <!-- ngIf: section.section.border_width > 0 -->
+                                    <!-- section bottom margin -->
+                                    <!-- ngIf: section.section.border_margin > 0 && section.section.border_width > 0 -->
+                                </tbody>
+                                </table><!-- end ngIf: $ctrl.sectionIsntSpacer(section) -->
+                            </td><!-- end ngIf: $ctrl.showSection(section) --><!-- end ngRepeat: section in row.sections --><!-- ngIf: $ctrl.showSection(section) --><td ng-repeat="section in row.sections" ng-attr-style="{{$ctrl.tdStyle(section)}}" ng-if="$ctrl.showSection(section)" ng-mouseover="$ctrl.highlightSectionSpacer(section)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'section' + section.style.section_area)}" ng-click="$ctrl.goToVerticalSection(section)" class="ng-scope" role="button" tabindex="0" style="border-collapse: collapse; padding-right: 8px; width: 8px;">
+                                <!-- ngIf: $ctrl.sectionIsntSpacer(section) -->
+                            </td><!-- end ngIf: $ctrl.showSection(section) --><!-- end ngRepeat: section in row.sections --><!-- ngIf: $ctrl.showSection(section) --><td ng-repeat="section in row.sections" ng-attr-style="{{$ctrl.tdStyle(section)}}" ng-if="$ctrl.showSection(section)" ng-mouseover="$ctrl.highlightSectionSpacer(section)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'section' + section.style.section_area)}" ng-click="$ctrl.goToVerticalSection(section)" class="ng-scope" role="button" tabindex="0" style="border-collapse:collapse;background-color:#000000;width: 3px;padding:0;">
+                                <!-- ngIf: $ctrl.sectionIsntSpacer(section) -->
+                            </td><!-- end ngIf: $ctrl.showSection(section) --><!-- end ngRepeat: section in row.sections --><!-- ngIf: $ctrl.showSection(section) --><td ng-repeat="section in row.sections" ng-attr-style="{{$ctrl.tdStyle(section)}}" ng-if="$ctrl.showSection(section)" ng-mouseover="$ctrl.highlightSectionSpacer(section)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'section' + section.style.section_area)}" ng-click="$ctrl.goToVerticalSection(section)" class="ng-scope" role="button" tabindex="0" style="border-collapse:collapse;padding-right: 8px;width:8px;">
+                                <!-- ngIf: $ctrl.sectionIsntSpacer(section) -->
+                            </td><!-- end ngIf: $ctrl.showSection(section) --><!-- end ngRepeat: section in row.sections --><!-- ngIf: $ctrl.showSection(section) --><td ng-repeat="section in row.sections" ng-attr-style="{{$ctrl.tdStyle(section)}}" ng-if="$ctrl.showSection(section)" ng-mouseover="$ctrl.highlightSectionSpacer(section)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'section' + section.style.section_area)}" ng-click="$ctrl.goToVerticalSection(section)" class="ng-scope" role="button" tabindex="0" style="padding:0;">
+                                <!-- ngIf: $ctrl.sectionIsntSpacer(section) --><table ng-attr-style="{{$ctrl.tableStyle()}}" ng-if="$ctrl.sectionIsntSpacer(section)" border="0" cellpadding="0" cellspacing="0" class="ng-scope" style="font-family:Arial,Helvetica,sans-serif;line-height:0px;font-size:1px;padding:0px;border-spacing:0px;margin:0px;border-collapse:collapse;">
+                                <tbody>
+                                    <!-- EACH FIELD in vertical sections and horizontal field borders -->
+                                    <!-- ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="padding:0;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  --><zs-remove ng-if="$ctrl.showSocialField(field) " class="ng-scope">
+                                        <!-- without hyperlink -->
+                                        <!-- ngIf: !field.hyperlink --><img ng-if="!field.hyperlink" ng-src="https://r8g4u6u5.stackpathcdn.com/assets/social/24/171616/04facebook.gif" height="24" width="24" alt="facebook" border="0" class="ng-scope" src="https://r8g4u6u5.stackpathcdn.com/assets/social/24/171616/04facebook.gif"><!-- end ngIf: !field.hyperlink -->
+                                        <!-- social with hyperlink -->
+                                        <!-- ngIf: field.hyperlink -->
+                                        </zs-remove><!-- end ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="border-collapse:collapse;padding-bottom:5px;height:5px;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0" style="">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="padding:0;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  --><zs-remove ng-if="$ctrl.showSocialField(field) " class="ng-scope">
+                                        <!-- without hyperlink -->
+                                        <!-- ngIf: !field.hyperlink --><img ng-if="!field.hyperlink" ng-src="https://r8g4u6u5.stackpathcdn.com/assets/social/24/000000/04twitter.gif" height="24" width="24" alt="twitter" border="0" class="ng-scope" src="https://r8g4u6u5.stackpathcdn.com/assets/social/24/000000/04twitter.gif"><!-- end ngIf: !field.hyperlink -->
+                                        <!-- social with hyperlink -->
+                                        <!-- ngIf: field.hyperlink -->
+                                        </zs-remove><!-- end ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="border-collapse:collapse;padding-bottom:5px;height:5px;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="padding:0;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  --><zs-remove ng-if="$ctrl.showSocialField(field) " class="ng-scope">
+                                        <!-- without hyperlink -->
+                                        <!-- ngIf: !field.hyperlink --><img ng-if="!field.hyperlink" ng-src="https://r8g4u6u5.stackpathcdn.com/assets/social/24/000000/04linkedin.gif" height="24" width="24" alt="linkedin" border="0" class="ng-scope" src="https://r8g4u6u5.stackpathcdn.com/assets/social/24/000000/04linkedin.gif"><!-- end ngIf: !field.hyperlink -->
+                                        <!-- social with hyperlink -->
+                                        <!-- ngIf: field.hyperlink -->
+                                        </zs-remove><!-- end ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="border-collapse:collapse;padding-bottom:5px;height:5px;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><tr ng-repeat="field in section.fields track by $index" ng-if="$ctrl.showFieldInColumn(section, field)" ng-class="{'zs-preview-highlight':$ctrl.isThingShown('highlighter', 'field' + field.area)}" ng-mouseover="$ctrl.highlightPreviewField(field)" ng-mouseleave="$ctrl.hideThing('highlighter')" ng-click="$ctrl.goToField(field, section)" class="zs-preview-highlight-on-hover ng-scope" role="button" tabindex="0" style="">
+                                    <td ng-attr-style="{{$ctrl.tdStyle(field)}}" style="padding:0;">
+                                        <!-- TEXT FIELDS -->
+                                        <!-- ngIf: field.category == 'text' || field.category == 'tag' -->
+                                        <!-- IMAGE FIELDS -->
+                                        <!-- ngIf: field.category == 'image' -->
+                                        <!-- SOCIAL FIELDS -->
+                                        <!-- ngIf: $ctrl.showSocialField(field)  --><zs-remove ng-if="$ctrl.showSocialField(field) " class="ng-scope">
+                                        <!-- without hyperlink -->
+                                        <!-- ngIf: !field.hyperlink --><img ng-if="!field.hyperlink" ng-src="https://r8g4u6u5.stackpathcdn.com/assets/social/24/000000/04google-plus.gif" height="24" width="24" alt="google-plus" border="0" class="ng-scope" src="https://r8g4u6u5.stackpathcdn.com/assets/social/24/000000/04google-plus.gif"><!-- end ngIf: !field.hyperlink -->
+                                        <!-- social with hyperlink -->
+                                        <!-- ngIf: field.hyperlink -->
+                                        </zs-remove><!-- end ngIf: $ctrl.showSocialField(field)  -->
+                                    </td>
+                                    </tr><!-- end ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index --><!-- ngIf: $ctrl.showFieldInColumn(section, field) --><!-- end ngRepeat: field in section.fields track by $index -->
+                                    <!-- TEXT & SOCIAL FIELDS in horizontal sections -->
+                                    <!-- ngIf: section.section.in_a_row && !$ctrl.onlySocialFieldsInSection(section) -->
+                                    <!-- section bottom padding -->
+                                    <!-- ngIf: section.section.border_padding > 0 -->
+                                    <!-- section bottom border -->
+                                    <!-- ngIf: section.section.border_width > 0 -->
+                                    <!-- section bottom margin -->
+                                    <!-- ngIf: section.section.border_margin > 0 && section.section.border_width > 0 -->
+                                </tbody>
+                                </table><!-- end ngIf: $ctrl.sectionIsntSpacer(section) -->
+                            </td><!-- end ngIf: $ctrl.showSection(section) --><!-- end ngRepeat: section in row.sections --><!-- ngIf: $ctrl.showSection(section) --><!-- end ngRepeat: section in row.sections --><!-- ngIf: $ctrl.showSection(section) --><!-- end ngRepeat: section in row.sections --><!-- ngIf: $ctrl.showSection(section) --><!-- end ngRepeat: section in row.sections -->
+                            </tr>
+                        </tbody>
+                        </table>
+                    </td>
+                    </tr><!-- end ngRepeat: row in table.rows -->
+                </tbody>
+                </table>
+            </td>
+    
+    </tr>
+    </tbody>
+    </table>
+    </td>
+</footer>
+  
+ </body>
+</html>
